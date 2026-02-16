@@ -6,6 +6,7 @@ import Home from './views/Home'
 import Services from "./views/Services";
 import Experience from "./views/Experience";
 import Projects from "./views/Projects";
+import Blog from "./views/Blog";
 import LoadingScreen from "./components/LoadingScreen";
 import { ThemeProvider } from "./themeProvider";
 
@@ -27,6 +28,7 @@ function App() {
             {/* <Services /> */}
             <Experience />
             <Projects />
+            <Blog />
             <Contact />
           </div>
 

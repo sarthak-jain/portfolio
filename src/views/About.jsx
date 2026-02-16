@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { techStack } from "../constants";
 import { ThemeContext } from "../themeProvider";
 import { motion } from "framer-motion";
+import sarthakPic from "../assets/sarthakPic.jpeg";
 
 const About = () => {
   const theme = useContext(ThemeContext);
@@ -23,22 +24,29 @@ const About = () => {
             <h4 className="mt-12 text-3xl font-semibold text-blue-500">
               A bit about me
             </h4>
-            <p
-              className={
-                darkMode
-                  ? "mt-4 text-xl text-justify text-gray-500"
-                  : "mt-4 text-xl text-justify text-white"
-              }
-            >
-              Software Engineer with 9+ years of experience building large-scale
-              distributed systems at Amazon, Morgan Stanley, and S&P Global.
-              Skilled in full-stack development with a strong focus on backend
-              engineering, API development, performance optimization, and team
-              leadership. Passionate about innovation, GenAI-driven tooling and
-              operational efficiency. Holds a Master of Science in Computer Science
-              from New York University (Courant Institute) and a Bachelor of
-              Engineering from Manipal Institute of Technology.
-            </p>
+            <div className="flex flex-col md:flex-row items-center gap-8 mt-4">
+              <img
+                src={sarthakPic}
+                alt="Sarthak Jain"
+                className="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover shadow-lg flex-shrink-0"
+              />
+              <p
+                className={
+                  darkMode
+                    ? "text-xl text-justify text-gray-500"
+                    : "text-xl text-justify text-white"
+                }
+              >
+                Software Engineer with 9+ years of experience building large-scale
+                distributed systems at Amazon, Morgan Stanley, and S&P Global.
+                Skilled in full-stack development with a strong focus on backend
+                engineering, API development, performance optimization, and team
+                leadership. Passionate about innovation, GenAI-driven tooling and
+                operational efficiency. Holds a Master of Science in Computer Science
+                from New York University (Courant Institute) and a Bachelor of
+                Engineering from Manipal Institute of Technology.
+              </p>
+            </div>
           </motion.div>
           <motion.div
           >

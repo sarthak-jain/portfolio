@@ -26,6 +26,10 @@ const Navbar = () => {
       route: "projects",
     },
     {
+      name: "Blog",
+      route: "blog",
+    },
+    {
       name: "Contact",
       route: "contact",
     },
