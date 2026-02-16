@@ -79,6 +79,26 @@ const About = () => {
               </motion.div>
             ))}
           </motion.div>
+          <motion.div>
+            <h4 className="mt-12 text-3xl font-semibold text-blue-500">
+              What I'm Working On
+            </h4>
+            <p
+              className={
+                darkMode
+                  ? "mt-4 text-xl text-justify text-gray-500"
+                  : "mt-4 text-xl text-justify text-white"
+              }
+            >
+              I'm transitioning into AI Engineering, combining 9+ years of
+              backend and full-stack experience with practical AI/ML skills.
+              Currently enrolled in the "Become an AI Engineer" cohort by
+              ByteByteAI/ByteByteGo, where I'm building 5 hands-on projects
+              spanning LLM prompt engineering, RAG-based chatbots, autonomous
+              agents, and multi-modal AI — bridging the gap between traditional
+              software engineering and modern AI systems.
+            </p>
+          </motion.div>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Card from "../components/Card";
 import { ThemeContext } from "../themeProvider";
 
-const projects = [
+const workProjects = [
   {
     title: "Cart Page Delivery Messaging — Amazon",
     description:
@@ -41,6 +41,44 @@ const projects = [
   },
 ];
 
+const personalProjects = [
+  {
+    title: "LLM Playground",
+    description:
+      "Interactive app to experiment with LLM behavior, prompt engineering, and model parameter tuning.",
+    tags: ["Python", "LLM", "Prompt Engineering"],
+    status: "In Progress",
+  },
+  {
+    title: "Customer Support Chatbot",
+    description:
+      "AI-powered customer support chatbot using Retrieval-Augmented Generation (RAG) for accurate, context-aware responses.",
+    tags: ["Python", "RAG", "LLM", "Vector DB"],
+    status: "Upcoming",
+  },
+  {
+    title: "Ask-the-Web Agent",
+    description:
+      "Perplexity-style agent that searches the web and synthesizes answers using tool calling and LLM reasoning.",
+    tags: ["Python", "LLM", "Tool Calling", "Web Search"],
+    status: "Upcoming",
+  },
+  {
+    title: "Deep Research Agent",
+    description:
+      "Research agent combining web search with multi-step reasoning to produce in-depth analysis on any topic.",
+    tags: ["Python", "LLM", "Web Search", "Reasoning"],
+    status: "Upcoming",
+  },
+  {
+    title: "Multi-Modal Generation Agent",
+    description:
+      "Agent capable of generating images and videos using multi-modal AI models.",
+    tags: ["Python", "LLM", "Image Generation", "Multi-Modal"],
+    status: "Upcoming",
+  },
+];
+
 const Projects = () => {
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
@@ -55,16 +93,30 @@ const Projects = () => {
           Projects
         </h2>
         <h4 className="mt-16 text-3xl font-semibold text-blue-600">
-          What I Built
+          Work Projects
         </h4>
         <div className="mt-8 flex justify-between items-stretch flex-wrap">
-          {projects.map((project, index) => (
+          {workProjects.map((project, index) => (
             <Card
               key={index}
               title={project.title}
               description={project.description}
               tags={project.tags}
               link={project.link}
+            />
+          ))}
+        </div>
+        <h4 className="mt-16 text-3xl font-semibold text-blue-600">
+          Personal Projects — AI/ML
+        </h4>
+        <div className="mt-8 flex justify-between items-stretch flex-wrap">
+          {personalProjects.map((project, index) => (
+            <Card
+              key={index}
+              title={project.title}
+              description={project.description}
+              tags={project.tags}
+              status={project.status}
             />
           ))}
         </div>
