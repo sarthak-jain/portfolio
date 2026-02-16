@@ -9,16 +9,39 @@ const timeline = [
     organization: "Amazon.com Services Inc",
     location: "New York, NY, USA",
     title: "Software Development Engineer II",
-    bullets: [
-      "Led design and development of 1-hr and 3-hr Sub-Same Day delivery messaging CX on Amazon's Checkout Page.",
-      "Spearheaded a unified mobile bottom-sheet experience simplifying delivery scheduling across all fulfillment programs on Checkout.",
-      "Launched delivery messaging on the Cart Page — drove +$170M GCCP, +$377M OPS, +15M paid units, and 10K fewer customer contacts.",
-      "Led multiple high-impact Weblab A/B experiments: simplified delivery messaging (+$77M GCCP), Subscribe & Save onboarding (+$23M GCCP, +1.6M subscriptions), Multi Offer Display (+$22M GCCP).",
-      "Designed and developed CX Replay Testing framework automating regression testing for all customer-facing changes.",
-      "Drove Operational Excellence initiatives across SDX organization for 1.5 years.",
-      "Mentored cross-functional peers (SDEs, TPMs, PMs) on design reviews, debugging techniques and service ownership.",
+    description:
+      "Designed and developed large-scale, low-latency backend services, REST APIs, and frontend components that power delivery messaging for 200M+ global users on Amazon\u2019s retail websites, leveraging internal GenAI tools (Amazon Q/Kiro) to accelerate implementation. Led end-to-end full-stack feature delivery and A/B experiments while improving operational excellence through monitoring, production troubleshooting, high-availability optimizations, CI/CD automation, and clear documentation of key architectural decisions.",
+    sections: [
+      {
+        header: "Checkout Delivery Message Platform Team",
+        bullets: [
+          "Led design and development of 1\u2011hr and 3\u2011hr Sub\u2011Same Day delivery messaging CX on Amazon\u2019s Checkout Page.",
+          "Spearheaded design and development of a unified mobile bottom-sheet experience that simplifies delivery scheduling across all fulfillment programs on the Checkout Page.",
+          "Modernized Checkout delivery option CX by converting legacy radio buttons to container\u2011style layouts and simplifying Sub\u2011Same Day scheduling through a radio button experience, enhancing accessibility (a11y\u2011compliance), usability and customer interaction rates.",
+        ],
+      },
+      {
+        header: "Pre-Checkout Delivery Message Platform Team",
+        bullets: [
+          "Launched delivery messaging on the Cart Page by designing and developing new APIs, achieving a 1.11% reduction in checkout time and driving major business impact: +$170M Gross Customer Contribution Profit (GCCP), +$377M Operating Profit Savings (OPS), +15M paid units, and 10K fewer customer contacts.",
+          {
+            text: "Led design, implementation and launch of multiple high-impact Weblab based experiments to enhance delivery messaging customer experience across Amazon\u2019s Retail Websites. [Java, JavaScript, Datapath]",
+            subBullets: [
+              "Simplified delivery condition messaging (+$77M GCCP, +$372M OPS, 141K fewer customer contacts resulting in 7K fewer concessions)",
+              "Onboarded Subscribe and Save delivery messages to Unified Delivery Messaging framework (+$23M Annualized GCCP and +1.6M WW Annualized SnS subscriptions)",
+              "Onboarded Multi Offer Display collapsed delivery message to Unified Delivery Messaging framework (+$22M Annualized GCCP)",
+              "Integrated Prime badge and delivery messaging into Prime Exclusive Deals on Detail Page and Search Page",
+              "Added Prime Upsell CX for Non-Prime and Unrecognized customers on Detail Page and Search Page",
+            ],
+          },
+          "Designed and developed CX Replay Testing framework automating regression testing for all customer-facing changes. [Java, JavaScript, AWS \u2013 Lambda, EC2, ECS, Fargate, S3, DynamoDB]",
+          "Drove Operational Excellence initiatives across SDX organization for 1.5 years, establishing Away Team metrics monitoring and reporting processes as well as prediction band metrics and automated alarms.",
+          "Autonomously designed, built and delivered workflows for updating Prime badge and delivery messaging information when quantity is changed on Detail Page of Amazon\u2019s Retail Websites for any product. [Java, JavaScript, Perl]",
+          "Mentored cross-functional peers (SDEs, TPMs, PMs) on design reviews, domain knowledge, debugging techniques and service ownership best practices.",
+        ],
+      },
     ],
-    tags: ["Java", "JavaScript", "AWS", "REST API", "DynamoDB", "S3", "Lambda", "CI/CD", "A/B Testing"],
+    tags: ["Java", "JavaScript", "Object Oriented Design", "AWS"],
   },
   {
     type: "work",
@@ -27,12 +50,19 @@ const timeline = [
     location: "New York, NY, USA",
     title: "Technology Associate",
     bullets: [
-      "Developed backend REST API services for Next Best Action recommendation system providing investment options to Financial Advisors.",
-      "Built Edge NGrams Typeahead and Search with phrase matching and 15ms response times.",
-      "Reduced Solr indexing runtime by 50% for 140 million documents and optimized API query response times.",
-      "Developed POC using Word2Vec ML algorithm to improve search relevancy — POC was productionized.",
-      "Transformed Spark SQL/Scala code to optimized Hive Script reducing runtime by 50%.",
-      "Managed Level 3 Support: led a team of 3, coordinated with multiple teams to resolve escalated issues.",
+      {
+        text: "Developed backend REST API services for recommendation system (Next Best Action) providing investment options to Financial Advisors.",
+        subBullets: [
+          "Developed Edge NGrams Typeahead and Search functionality with phrase matching and response times of 15ms",
+          "Enabled near real time recommendation of options by transforming batch processing to Spark processing framework",
+          "Reduced Solr indexing process runtime by 50% for 140 million documents and optimized API query response times",
+          "Handled additional responsibility of Level 3 Support lead: managed a team of 3, coordinated with multiple teams and resolved any issues escalated by L2 across all components",
+        ],
+      },
+      "Developed POC to improve search relevancy using Word2Vec ML algorithm. Demonstrated Word2Vec query pipeline improved relevancy using AngularJS UI dashboard, hence POC was productionized.",
+      "Transformed Spark SQL/Scala code to optimized Hive Script reducing the run time by 50%.",
+      "Completed the coding intensive Technology Analyst program which included Java, Scala, C++, and SQL, etc.",
+      "Developed feed monitoring dashboard using Java, Spring Framework, REST API, HTML, Vis.JS and AngularJS.",
     ],
     tags: ["Java", "Scala", "Solr", "Hive", "MySQL", "AngularJS", "REST API", "Word2Vec"],
   },
@@ -53,7 +83,7 @@ const timeline = [
     date: "Sep 2014 – May 2016",
     organization: "New York University",
     location: "New York, USA",
-    title: "Master of Science in Computer Science",
+    title: "Master of Science in Computer and Information Sciences",
     subtitle: "Courant Institute of Mathematical Sciences",
     tags: ["Fundamental Algorithms", "Big Data Analytics", "Advanced Databases", "Production Quality Software", "NLP", "Big Data Science"],
   },
@@ -150,20 +180,99 @@ const Experience = () => {
                     {item.subtitle}
                   </p>
                 )}
-                {item.bullets && (
-                  <ul className="mt-4 space-y-2">
-                    {item.bullets.map((bullet, i) => (
-                      <li
-                        key={i}
+                {item.description && (
+                  <p
+                    className={
+                      darkMode
+                        ? "text-gray-600 text-sm leading-relaxed mt-3"
+                        : "text-gray-300 text-sm leading-relaxed mt-3"
+                    }
+                  >
+                    {item.description}
+                  </p>
+                )}
+                {item.sections &&
+                  item.sections.map((section, si) => (
+                    <div key={si} className="mt-5">
+                      <h4
                         className={
                           darkMode
-                            ? "text-gray-600 text-sm leading-relaxed"
-                            : "text-gray-300 text-sm leading-relaxed"
+                            ? "text-md font-semibold text-gray-800"
+                            : "text-md font-semibold text-gray-200"
                         }
                       >
-                        {bullet}
-                      </li>
-                    ))}
+                        {section.header}
+                      </h4>
+                      <ul className="mt-2 space-y-2 list-disc list-outside pl-5">
+                        {section.bullets.map((bullet, bi) => {
+                          const text = typeof bullet === "string" ? bullet : bullet.text;
+                          const subBullets = typeof bullet === "object" ? bullet.subBullets : null;
+                          return (
+                            <li
+                              key={bi}
+                              className={
+                                darkMode
+                                  ? "text-gray-600 text-sm leading-relaxed"
+                                  : "text-gray-300 text-sm leading-relaxed"
+                              }
+                            >
+                              {text}
+                              {subBullets && (
+                                <ul className="mt-1 space-y-1 list-[circle] list-outside pl-5">
+                                  {subBullets.map((sub, sbi) => (
+                                    <li
+                                      key={sbi}
+                                      className={
+                                        darkMode
+                                          ? "text-gray-600 text-sm leading-relaxed"
+                                          : "text-gray-300 text-sm leading-relaxed"
+                                      }
+                                    >
+                                      {sub}
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  ))}
+                {item.bullets && (
+                  <ul className="mt-4 space-y-2 list-disc list-outside pl-5">
+                    {item.bullets.map((bullet, i) => {
+                      const text = typeof bullet === "string" ? bullet : bullet.text;
+                      const subBullets = typeof bullet === "object" ? bullet.subBullets : null;
+                      return (
+                        <li
+                          key={i}
+                          className={
+                            darkMode
+                              ? "text-gray-600 text-sm leading-relaxed"
+                              : "text-gray-300 text-sm leading-relaxed"
+                          }
+                        >
+                          {text}
+                          {subBullets && (
+                            <ul className="mt-1 space-y-1 list-[circle] list-outside pl-5">
+                              {subBullets.map((sub, sbi) => (
+                                <li
+                                  key={sbi}
+                                  className={
+                                    darkMode
+                                      ? "text-gray-600 text-sm leading-relaxed"
+                                      : "text-gray-300 text-sm leading-relaxed"
+                                  }
+                                >
+                                  {sub}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 )}
                 <div className="flex flex-wrap gap-2 mt-4">
