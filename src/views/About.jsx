@@ -53,6 +53,8 @@ const About = () => {
                 operational efficiency. Holds a <strong>Master of Science in Computer Science</strong> from{" "}
                 <strong>New York University</strong> (Courant Institute) and a <strong>Bachelor of
                 Engineering</strong> from <strong>Manipal Institute of Technology</strong>.
+                Outside of work, I enjoy building personal projects spanning{" "}
+                <strong>full-stack development</strong> and <strong>AI/ML</strong>.
               </p>
             </div>
           </motion.div>
