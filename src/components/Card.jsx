@@ -11,7 +11,7 @@ const highlightMetrics = (text) => {
   );
 };
 
-const Card = ({ title, description, tags, link, status }) => {
+const Card = ({ title, description, tags, link, status, references }) => {
   return (
     <motion.div
       initial={"hidden"}
@@ -48,6 +48,27 @@ const Card = ({ title, description, tags, link, status }) => {
               <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">
                 {tag}
               </span>
+            ))}
+          </div>
+        )}
+        {references && (
+          <div class="flex flex-wrap gap-2 mb-3 items-center">
+            <span class="text-xs font-semibold text-blue-500">Featured in:</span>
+            {references.map((ref, i) => (
+              <a
+                key={i}
+                href={ref.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full border border-blue-400 text-blue-500 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+              >
+                <img
+                  src={ref.icon}
+                  alt=""
+                  class="w-3.5 h-3.5 rounded-sm"
+                />
+                {ref.label}
+              </a>
             ))}
           </div>
         )}

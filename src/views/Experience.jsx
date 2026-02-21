@@ -68,6 +68,12 @@ const timeline = [
           "Reduced Solr indexing process runtime by 50% for 140 million documents and optimized API query response times",
           "Handled additional responsibility of Level 3 Support lead: managed a team of 3, coordinated with multiple teams and resolved any issues escalated by L2 across all components",
         ],
+        references: [
+          { label: "Forbes", url: "https://www.forbes.com/sites/tomdavenport/2020/05/16/the-future-of-work-now-morgan-stanleys-financial-advisors-and-the-next-best-offer-system/", icon: "https://icons.duckduckgo.com/ip3/www.forbes.com.ico" },
+          { label: "CNBC", url: "https://www.cnbc.com/2018/11/20/morgan-stanley-launches-new-advisory-technology-platform.html", icon: "https://icons.duckduckgo.com/ip3/www.cnbc.com.ico" },
+          { label: "Morgan Stanley", url: "https://www.morganstanley.com/press-releases/key-milestone-in-innovation-journey-with-openai", icon: "https://icons.duckduckgo.com/ip3/www.morganstanley.com.ico" },
+          { label: "Emerj", url: "https://emerj.com/artificial-intelligence-at-morgan-stanley-three-use-cases/", icon: "https://icons.duckduckgo.com/ip3/emerj.com.ico" },
+        ],
       },
       "Developed POC to improve search relevancy using Word2Vec ML algorithm. Demonstrated Word2Vec query pipeline improved relevancy using AngularJS UI dashboard, hence POC was productionized.",
       "Transformed Spark SQL/Scala code to optimized Hive Script reducing the run time by 50%.",
@@ -254,6 +260,7 @@ const Experience = () => {
                     {item.bullets.map((bullet, i) => {
                       const text = typeof bullet === "string" ? bullet : bullet.text;
                       const subBullets = typeof bullet === "object" ? bullet.subBullets : null;
+                      const references = typeof bullet === "object" ? bullet.references : null;
                       return (
                         <li
                           key={i}
@@ -279,6 +286,27 @@ const Experience = () => {
                                 </li>
                               ))}
                             </ul>
+                          )}
+                          {references && (
+                            <div className="mt-2 flex flex-wrap gap-2 items-center">
+                              <span className="text-xs font-semibold text-blue-500">Featured in:</span>
+                              {references.map((ref, ri) => (
+                                <a
+                                  key={ri}
+                                  href={ref.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full border border-blue-400 text-blue-500 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                                >
+                                  <img
+                                    src={ref.icon}
+                                    alt=""
+                                    className="w-3.5 h-3.5 rounded-sm"
+                                  />
+                                  {ref.label}
+                                </a>
+                              ))}
+                            </div>
                           )}
                         </li>
                       );

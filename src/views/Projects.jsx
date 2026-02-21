@@ -32,6 +32,12 @@ const workProjects = [
     description:
       "Developed backend REST API services for a recommendation system providing investment options to Financial Advisors. Built Edge NGrams Typeahead with 15ms response times and reduced Solr indexing runtime by 50% for 140M documents.",
     tags: ["Java", "Scala", "Solr", "Hive", "MySQL", "AngularJS"],
+    references: [
+      { label: "Forbes", url: "https://www.forbes.com/sites/tomdavenport/2020/05/16/the-future-of-work-now-morgan-stanleys-financial-advisors-and-the-next-best-offer-system/", icon: "https://icons.duckduckgo.com/ip3/www.forbes.com.ico" },
+      { label: "CNBC", url: "https://www.cnbc.com/2018/11/20/morgan-stanley-launches-new-advisory-technology-platform.html", icon: "https://icons.duckduckgo.com/ip3/www.cnbc.com.ico" },
+      { label: "Morgan Stanley", url: "https://www.morganstanley.com/press-releases/key-milestone-in-innovation-journey-with-openai", icon: "https://icons.duckduckgo.com/ip3/www.morganstanley.com.ico" },
+      { label: "Emerj", url: "https://emerj.com/artificial-intelligence-at-morgan-stanley-three-use-cases/", icon: "https://icons.duckduckgo.com/ip3/emerj.com.ico" },
+    ],
   },
   {
     title: "Word2Vec Search Relevancy — Morgan Stanley",
@@ -113,6 +119,7 @@ const Projects = () => {
               description={project.description}
               tags={project.tags}
               link={project.link}
+              references={project.references}
             />
           ))}
         </div>
