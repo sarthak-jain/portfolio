@@ -2,6 +2,16 @@ import React, { useContext } from "react";
 import { ThemeContext } from "../themeProvider";
 import { motion } from "framer-motion";
 
+const highlightMetrics = (text) => {
+  if (typeof text !== "string") return text;
+  const pattern = /(\+?\$[\d,.]+[MBKT]*|\d+(?:\.\d+)?%|\+?\d+(?:\.\d+)?[MBKT]\+?|\d+ms\b)/;
+  const parts = text.split(pattern);
+  if (parts.length === 1) return text;
+  return parts.map((part, i) =>
+    i % 2 === 1 ? <strong key={i}>{part}</strong> : part
+  );
+};
+
 const timeline = [
   {
     type: "work",
@@ -188,7 +198,7 @@ const Experience = () => {
                         : "text-gray-300 text-sm leading-relaxed mt-3"
                     }
                   >
-                    {item.description}
+                    {highlightMetrics(item.description)}
                   </p>
                 )}
                 {item.sections &&
@@ -216,7 +226,7 @@ const Experience = () => {
                                   : "text-gray-300 text-sm leading-relaxed"
                               }
                             >
-                              {text}
+                              {highlightMetrics(text)}
                               {subBullets && (
                                 <ul className="mt-1 space-y-1 list-[circle] list-outside pl-5">
                                   {subBullets.map((sub, sbi) => (
@@ -228,7 +238,7 @@ const Experience = () => {
                                           : "text-gray-300 text-sm leading-relaxed"
                                       }
                                     >
-                                      {sub}
+                                      {highlightMetrics(sub)}
                                     </li>
                                   ))}
                                 </ul>
@@ -253,7 +263,7 @@ const Experience = () => {
                               : "text-gray-300 text-sm leading-relaxed"
                           }
                         >
-                          {text}
+                          {highlightMetrics(text)}
                           {subBullets && (
                             <ul className="mt-1 space-y-1 list-[circle] list-outside pl-5">
                               {subBullets.map((sub, sbi) => (
@@ -265,7 +275,7 @@ const Experience = () => {
                                       : "text-gray-300 text-sm leading-relaxed"
                                   }
                                 >
-                                  {sub}
+                                  {highlightMetrics(sub)}
                                 </li>
                               ))}
                             </ul>

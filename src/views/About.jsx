@@ -3,6 +3,7 @@ import { techStack } from "../constants";
 import { ThemeContext } from "../themeProvider";
 import { motion } from "framer-motion";
 import sarthakPic from "../assets/sarthakPic.jpeg";
+import sarthakPic2 from "../assets/sarthakPic2.jpg";
 
 const About = () => {
   const theme = useContext(ThemeContext);
@@ -24,12 +25,19 @@ const About = () => {
             <h4 className="mt-12 text-3xl font-semibold text-blue-500">
               A bit about me
             </h4>
-            <div className="flex flex-col md:flex-row items-center gap-8 mt-4">
-              <img
-                src={sarthakPic}
-                alt="Sarthak Jain"
-                className="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover shadow-lg flex-shrink-0"
-              />
+            <div className="flex flex-col items-center mt-4">
+              <div className="flex justify-center gap-6 mb-8">
+                <img
+                  src={sarthakPic}
+                  alt="Sarthak Jain"
+                  className="w-40 h-40 md:w-52 md:h-52 rounded-full object-cover shadow-lg"
+                />
+                <img
+                  src={sarthakPic2}
+                  alt="Sarthak Jain"
+                  className="w-40 h-40 md:w-52 md:h-52 rounded-full object-cover shadow-lg"
+                />
+              </div>
               <p
                 className={
                   darkMode
@@ -37,14 +45,14 @@ const About = () => {
                     : "text-xl text-justify text-white"
                 }
               >
-                Software Engineer with 9+ years of experience building large-scale
-                distributed systems at Amazon, Morgan Stanley, and S&P Global.
-                Skilled in full-stack development with a strong focus on backend
-                engineering, API development, performance optimization, and team
-                leadership. Passionate about innovation, GenAI-driven tooling and
-                operational efficiency. Holds a Master of Science in Computer Science
-                from New York University (Courant Institute) and a Bachelor of
-                Engineering from Manipal Institute of Technology.
+                Software Engineer with <strong>9+ years of experience</strong> building large-scale
+                distributed systems at <strong>Amazon</strong>, <strong>Morgan Stanley</strong>, and <strong>S&amp;P Global</strong>.
+                Skilled in full-stack development with a strong focus on <strong>backend
+                engineering</strong>, <strong>API development</strong>, <strong>performance optimization</strong>, and <strong>team
+                leadership</strong>. Passionate about innovation, <strong>GenAI-driven tooling</strong> and
+                operational efficiency. Holds a <strong>Master of Science in Computer Science</strong> from{" "}
+                <strong>New York University</strong> (Courant Institute) and a <strong>Bachelor of
+                Engineering</strong> from <strong>Manipal Institute of Technology</strong>.
               </p>
             </div>
           </motion.div>
@@ -60,9 +68,9 @@ const About = () => {
                   : "mt-4 text-xl text-justify text-white"
               }
             >
-              Proficient in Java, JavaScript, Python, AWS, and a range of
-              databases and tools. Experienced with GenAI tooling including
-              Claude CLI and Amazon Kiro.
+              Proficient in <strong>Java, JavaScript, Python, AWS</strong>, and a range of
+              databases and tools. Experienced with GenAI tooling including{" "}
+              <strong>Claude CLI</strong> and <strong>Amazon Kiro</strong>.
             </p>
           </motion.div>
           <motion.div className="flex flex-wrap mt-8 flex flex-wrap justify-start gap-4">
@@ -98,12 +106,12 @@ const About = () => {
                   : "mt-4 text-xl text-justify text-white"
               }
             >
-              I'm transitioning into AI Engineering, combining 9+ years of
+              I'm transitioning into <strong>AI Engineering</strong>, combining <strong>9+ years</strong> of
               backend and full-stack experience with practical AI/ML skills.
-              Currently enrolled in the "Become an AI Engineer" cohort by
-              ByteByteAI/ByteByteGo, where I'm building 5 hands-on projects
-              spanning LLM prompt engineering, RAG-based chatbots, autonomous
-              agents, and multi-modal AI — bridging the gap between traditional
+              Currently enrolled in the <strong>"Become an AI Engineer"</strong> cohort by{" "}
+              <strong>ByteByteAI/ByteByteGo</strong>, where I'm building <strong>5 hands-on projects</strong>{" "}
+              spanning <strong>LLM prompt engineering</strong>, <strong>RAG-based chatbots</strong>, <strong>autonomous
+              agents</strong>, and <strong>multi-modal AI</strong> — bridging the gap between traditional
               software engineering and modern AI systems.
             </p>
           </motion.div>

@@ -54,9 +54,9 @@ const Home = () => {
                   : "mt-3 text-base text-white sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
               }
             >
-              Software Engineer with 9+ years of experience building large-scale
+              Software Engineer with <strong>9+ years of experience</strong> building large-scale
               distributed systems. Skilled in full-stack development with a strong
-              focus on backend engineering, API development, and performance optimization.
+              focus on <strong>backend engineering</strong>, <strong>API development</strong>, and <strong>performance optimization</strong>.
             </p>
             <div className="flex md:justify-start ">
               {contactLinks.map((el) => (

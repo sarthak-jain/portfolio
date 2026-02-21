@@ -1,6 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+const highlightMetrics = (text) => {
+  if (typeof text !== "string") return text;
+  const pattern = /(\+?\$[\d,.]+[MBKT]*|\d+(?:\.\d+)?%|\+?\d+(?:\.\d+)?[MBKT]\+?|\d+ms\b)/;
+  const parts = text.split(pattern);
+  if (parts.length === 1) return text;
+  return parts.map((part, i) =>
+    i % 2 === 1 ? <strong key={i}>{part}</strong> : part
+  );
+};
+
 const Card = ({ title, description, tags, link, status }) => {
   return (
     <motion.div
@@ -30,7 +40,7 @@ const Card = ({ title, description, tags, link, status }) => {
           )}
         </div>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          {description}
+          {highlightMetrics(description)}
         </p>
         {tags && (
           <div class="flex flex-wrap gap-2 mb-3">
