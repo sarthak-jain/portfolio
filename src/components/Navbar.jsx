@@ -1,12 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { Link } from "react-scroll";
 import { ThemeContext } from "../themeProvider";
 import { motion, AnimatePresence } from "framer-motion";
 import Hamburger from "hamburger-react";
 
+const liveProjects = [
+  {
+    name: "BookFinder",
+    description: "Book Recommendation Engine",
+    url: "https://sarthak-jain.github.io/BookFinderApplication/",
+  },
+];
+
 const Navbar = () => {
   const theme = useContext(ThemeContext);
   const [toggle, setToggle] = useState(false);
+  const [demoOpen, setDemoOpen] = useState(false);
+  const demoRef = useRef(null);
   const darkMode = theme.state.darkMode;
   const links = [
     {
@@ -34,6 +44,17 @@ const Navbar = () => {
       route: "contact",
     },
   ];
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (demoRef.current && !demoRef.current.contains(e.target)) {
+        setDemoOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   function toggleTheme() {
     if (darkMode === true) {
@@ -89,6 +110,60 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
+            <div className="relative ml-6" ref={demoRef}>
+              <button
+                onClick={() => setDemoOpen(!demoOpen)}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md bg-blue-500 text-white hover:bg-blue-600 transition-colors whitespace-nowrap"
+              >
+                Live Demos
+                <svg
+                  className={`w-3.5 h-3.5 transition-transform ${demoOpen ? "rotate-180" : ""}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {demoOpen && (
+                <div
+                  className={`absolute right-0 mt-2 w-56 rounded-lg shadow-lg border z-50 ${
+                    darkMode
+                      ? "bg-white border-gray-200"
+                      : "bg-gray-800 border-gray-600"
+                  }`}
+                >
+                  {liveProjects.map((project, i) => (
+                    <a
+                      key={i}
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center gap-3 px-4 py-3 transition-colors ${
+                        i === 0 ? "rounded-t-lg" : ""
+                      } ${
+                        i === liveProjects.length - 1 ? "rounded-b-lg" : ""
+                      } ${
+                        darkMode
+                          ? "hover:bg-gray-100 text-gray-800"
+                          : "hover:bg-gray-700 text-gray-200"
+                      }`}
+                      onClick={() => setDemoOpen(false)}
+                    >
+                      <svg className="w-4 h-4 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      <div>
+                        <div className="text-sm font-semibold">{project.name}</div>
+                        <div className={`text-xs ${darkMode ? "text-gray-500" : "text-gray-400"}`}>
+                          {project.description}
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
             <div onClick={() => toggleTheme()}>
               {darkMode ? (
                 <img
@@ -163,6 +238,25 @@ const Navbar = () => {
                 >
                   <li>{el.name}</li>
                 </Link>
+              ))}
+              {liveProjects.map((project, i) => (
+                <a
+                  key={i}
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={
+                    darkMode
+                      ? "hover:bg-blue-500 text-black flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium mt-1 hover:text-white"
+                      : "hover:bg-blue-500 text-white flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium mt-1 hover:text-white"
+                  }
+                  onClick={() => setToggle(false)}
+                >
+                  <li>{project.name}</li>
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
               ))}
             </ul>
           </motion.div>

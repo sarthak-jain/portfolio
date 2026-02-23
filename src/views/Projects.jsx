@@ -51,9 +51,10 @@ const fullStackProjects = [
   {
     title: "BookFinder — Book Recommendation Engine",
     description:
-      "Full-stack book recommendation engine powered by a Neo4j graph database with 60K+ books across 4 genres from the Goodreads dataset. Features hybrid recommendations (graph traversal, shelf similarity, collaborative filtering), mood-based discovery with 10 curated moods and a custom mood builder, full-text search, and interactive graph visualization. Website link coming soon.",
+      "Full-stack book recommendation engine built on a Neo4j graph database with 60K books, 129K nodes, and 376K relationships across 4 genres from the Goodreads dataset. Features 4 recommendation strategies (graph traversal, shelf similarity, collaborative filtering, and a weighted hybrid), mood-based discovery with 10 curated moods and a custom mood builder, Lucene-powered full-text search with filters, and interactive graph visualization using vis-network. Deployed with React on GitHub Pages, Spring Boot on Railway, and Neo4j AuraDB.",
     tags: ["Java", "Spring Boot", "Neo4j", "React", "Cypher", "REST API"],
     link: "https://github.com/sarthak-jain/BookFinderApplication",
+    demoLink: "https://sarthak-jain.github.io/BookFinderApplication/",
   },
 ];
 
@@ -134,6 +135,7 @@ const Projects = () => {
               description={project.description}
               tags={project.tags}
               link={project.link}
+              demoLink={project.demoLink}
             />
           ))}
         </div>
