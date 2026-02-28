@@ -6,6 +6,11 @@ import Hamburger from "hamburger-react";
 
 const liveProjects = [
   {
+    name: "MovieFinder",
+    description: "Gen-AI Movie Discovery Engine",
+    url: "https://findmynextmovie.com",
+  },
+  {
     name: "BookFinder",
     description: "Book Recommendation Engine",
     url: "https://sarthak-jain.github.io/BookFinderApplication/",
