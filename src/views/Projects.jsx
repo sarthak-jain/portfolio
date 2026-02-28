@@ -49,6 +49,14 @@ const workProjects = [
 
 const fullStackProjects = [
   {
+    title: "MovieFinder — Gen-AI Powered Movie Discovery Engine",
+    description:
+      "Full-stack movie discovery engine powered by Generative AI (Claude API) and a Neo4j graph database with 10K+ movies, 29K mood edges, and 20K similarity edges. Features AI-powered natural language search (e.g., \"scary movies for halloween\" auto-parsed into mood, genre, and title filters), mood-based discovery across 8 moods, Lucene full-text typeahead, and graph-based similar movie recommendations. Includes a live System Design Panel that visualizes the entire backend pipeline in real time — cache checks, graph traversals, AI query parsing, circuit breaker states, rate limiting, and ranking — via Server-Sent Events (SSE). Production-hardened with circuit breakers, rate limiters, Redis caching with tiered TTLs, and graceful degradation. Deployed on AWS: App Runner (backend), S3 + CloudFront (frontend), Neo4j AuraDB, and Upstash Redis.",
+    tags: ["Java", "Spring Boot", "Neo4j", "React", "Claude API", "Redis", "AWS", "SSE", "Docker"],
+    link: "https://github.com/sarthak-jain/MovieFinderMoodBasedDiscoveryEngine",
+    demoLink: "https://findmynextmovie.com",
+  },
+  {
     title: "BookFinder — Book Recommendation Engine",
     description:
       "Full-stack book recommendation engine built on a Neo4j graph database with 60K books, 129K nodes, and 376K relationships across 4 genres from the Goodreads dataset. Features 4 recommendation strategies (graph traversal, shelf similarity, collaborative filtering, and a weighted hybrid), mood-based discovery with 10 curated moods and a custom mood builder, Lucene-powered full-text search with filters, and interactive graph visualization using vis-network. Deployed with React on GitHub Pages, Spring Boot on Railway, and Neo4j AuraDB.",
