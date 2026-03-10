@@ -49,6 +49,14 @@ const workProjects = [
 
 const fullStackProjects = [
   {
+    title: "Real-Time Soccer Dashboard — Live Streaming & System Design",
+    description:
+      <>A real-time soccer dashboard that <strong>streams live scores from 12 major world leagues via WebSocket</strong> and visualizes the entire backend pipeline in a live <strong>System Design Panel via Server-Sent Events (SSE)</strong>. Features a <strong>dual streaming architecture</strong> — SSE for the observability panel (server→client event stream) and WebSocket for live scores (bidirectional with league subscriptions). Includes an <strong>adaptive polling engine</strong> with data diff pipeline that compares cached vs fresh data and pushes only deltas to subscribed clients. Integrates <strong>3 AI-powered features (Claude Haiku)</strong>: league analysis, news digest, and a panel narrator that explains backend operations in plain English. Built with resilience patterns including per-API circuit breakers, sliding window rate limiters, and cache-aside with TTL-based expiry. <strong>Deployed on AWS: ECS Fargate, RDS MySQL, ElastiCache Redis, ALB (3600s idle timeout for SSE/WebSocket), S3 + CloudFront with custom domain.</strong></>,
+    tags: ["Java", "Spring Boot", "React", "WebSocket", "SSE", "Redis", "MySQL", "Claude API", "AWS", "Docker"],
+    link: "https://github.com/sarthak-jain/RealTimeSoccerDashboard",
+    demoLink: "https://realtimesoccer.com",
+  },
+  {
     title: "MovieFinder — Gen-AI Powered Movie Discovery Engine",
     description:
       <>Full-stack movie discovery engine <strong>powered by Generative AI (Claude API)</strong> and a Neo4j graph database with 10K+ movies, 29K mood edges, and 20K similarity edges. Features <strong>AI-powered natural language search</strong> (e.g., "scary movies for halloween" auto-parsed into mood, genre, and title filters), mood-based discovery across 8 moods, Lucene full-text typeahead, and graph-based similar movie recommendations. Includes a <strong>live System Design Panel that visualizes the entire backend pipeline in real time — cache checks, graph traversals, AI query parsing, circuit breaker states, rate limiting, and ranking — via Server-Sent Events (SSE)</strong>. Production-hardened with circuit breakers, rate limiters, Redis caching with tiered TTLs, and graceful degradation. Deployed on AWS: App Runner (backend), S3 + CloudFront (frontend), Neo4j AuraDB, and Upstash Redis.</>,

@@ -6,6 +6,11 @@ import Hamburger from "hamburger-react";
 
 const liveProjects = [
   {
+    name: "Soccer Dashboard",
+    description: "Real-Time Streaming & System Design",
+    url: "https://realtimesoccer.com",
+  },
+  {
     name: "MovieFinder",
     description: "Gen-AI Movie Discovery Engine",
     url: "https://findmynextmovie.com",
