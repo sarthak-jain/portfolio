@@ -1,5 +1,6 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { Link } from "react-scroll";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ThemeContext } from "../themeProvider";
 import { motion, AnimatePresence } from "framer-motion";
 import Hamburger from "hamburger-react";
@@ -28,31 +29,16 @@ const Navbar = () => {
   const [demoOpen, setDemoOpen] = useState(false);
   const demoRef = useRef(null);
   const darkMode = theme.state.darkMode;
-  const links = [
-    {
-      name: "Home",
-      route: "/",
-    },
-    {
-      name: "About",
-      route: "about",
-    },
-    {
-      name: "Experience",
-      route: "experience",
-    },
-    {
-      name: "Projects",
-      route: "projects",
-    },
-    {
-      name: "Blog",
-      route: "blog",
-    },
-    {
-      name: "Contact",
-      route: "contact",
-    },
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isMainPage = location.pathname === "/";
+
+  const scrollLinks = [
+    { name: "Home", route: "/" },
+    { name: "About", route: "about" },
+    { name: "Experience", route: "experience" },
+    { name: "Projects", route: "projects" },
+    { name: "Contact", route: "contact" },
   ];
 
   // Close dropdown when clicking outside
@@ -73,6 +59,21 @@ const Navbar = () => {
       theme.dispatch({ type: "DARKMODE" });
     }
   }
+
+  const handleScrollLink = (route) => {
+    if (!isMainPage) {
+      navigate("/");
+      // Scroll will happen on page load via hash or react-scroll
+    }
+  };
+
+  const linkClass = darkMode
+    ? "block py-2 px-3 text-black hover:bg-blue-500 hover:text-white rounded-md"
+    : "block py-2 px-3 text-white hover:bg-blue-500 hover:text-black rounded-md";
+
+  const mobileLinkClass = darkMode
+    ? "hover:bg-blue-500 text-black block px-3 py-2 rounded-md text-base font-medium mt-1 hover:text-white"
+    : "hover:bg-blue-500 text-white block px-3 py-2 rounded-md text-base font-medium mt-1 hover:text-white";
 
   return (
     <>
@@ -102,23 +103,46 @@ const Navbar = () => {
                 "flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-md md:font-medium"
               }
             >
-              {links.map((el) => (
-                <li className="cursor-pointer">
-                  <Link
-                    to={el.route}
-                    activeClass={"text-white bg-blue-500"}
-                    spy={true}
-                    smooth={true}
-                    className={
-                      darkMode
-                        ? "block py-2 px-3 text-black hover:bg-blue-500 hover:text-white rounded-md"
-                        : "block py-2 px-3 text-white hover:bg-blue-500 hover:text-black rounded-md"
-                    }
-                  >
-                    {el.name}
-                  </Link>
+              {scrollLinks.map((el) => (
+                <li key={el.name} className="cursor-pointer">
+                  {isMainPage ? (
+                    <Link
+                      to={el.route}
+                      activeClass={"text-white bg-blue-500"}
+                      spy={true}
+                      smooth={true}
+                      className={linkClass}
+                    >
+                      {el.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={el.route === "/" ? "/" : `/#${el.route}`}
+                      className={linkClass}
+                      onClick={() => handleScrollLink(el.route)}
+                    >
+                      {el.name}
+                    </a>
+                  )}
                 </li>
               ))}
+              {/* Blog link — always a route navigation */}
+              <li className="cursor-pointer">
+                <a
+                  href="/blog"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate("/blog");
+                  }}
+                  className={`${linkClass} ${
+                    location.pathname.startsWith("/blog")
+                      ? "text-white bg-blue-500"
+                      : ""
+                  }`}
+                >
+                  Blog
+                </a>
+              </li>
             </ul>
             <div className="relative ml-6" ref={demoRef}>
               <button
@@ -233,22 +257,42 @@ const Navbar = () => {
             }
           >
             <ul class="md:hidden md:flex-row md:space-y-8 md:mt-0 md:text-md md:font-medium">
-              {links.map((el) => (
-                <Link
-                  to={el.route}
-                  activeClass={"text-white bg-blue-500"}
-                  className={
-                    darkMode
-                      ? "hover:bg-blue-500 text-black block px-3 py-2 rounded-md text-base font-medium mt-1 hover:text-white"
-                      : "hover:bg-blue-500 text-white block px-3 py-2 rounded-md text-base font-medium mt-1 hover:text-white"
-                  }
-                  spy={true}
-                  smooth={true}
-                  onClick={() => setToggle(false)}
-                >
-                  <li>{el.name}</li>
-                </Link>
+              {scrollLinks.map((el) => (
+                isMainPage ? (
+                  <Link
+                    key={el.name}
+                    to={el.route}
+                    activeClass={"text-white bg-blue-500"}
+                    className={mobileLinkClass}
+                    spy={true}
+                    smooth={true}
+                    onClick={() => setToggle(false)}
+                  >
+                    <li>{el.name}</li>
+                  </Link>
+                ) : (
+                  <a
+                    key={el.name}
+                    href={el.route === "/" ? "/" : `/#${el.route}`}
+                    className={mobileLinkClass}
+                    onClick={() => setToggle(false)}
+                  >
+                    <li>{el.name}</li>
+                  </a>
+                )
               ))}
+              {/* Blog link in mobile */}
+              <a
+                href="/blog"
+                className={mobileLinkClass}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/blog");
+                  setToggle(false);
+                }}
+              >
+                <li>Blog</li>
+              </a>
               {liveProjects.map((project, i) => (
                 <a
                   key={i}
