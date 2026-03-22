@@ -18,7 +18,7 @@ const About = () => {
               : "text-5xl font-bold px-4 md:px-0 text-center text-white"
           }
         >
-          About Me
+          About
         </h2>
         <div>
           <motion.div>

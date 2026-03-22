@@ -42,6 +42,8 @@ const Home = () => {
                     1500,
                     "API Architect",
                     1500,
+                    "AI/ML Engineer",
+                    1500,
                   ]}
                   loop={Infinity}
                 />
@@ -56,7 +58,9 @@ const Home = () => {
             >
               Software Engineer with <strong>9+ years of experience</strong> building large-scale
               distributed systems. Skilled in full-stack development with a strong
-              focus on <strong>backend engineering</strong>, <strong>API development</strong>, and <strong>performance optimization</strong>.
+              focus on <strong>backend engineering</strong>, <strong>API development</strong>, <strong>performance optimization</strong>, and{" "}
+              <strong>team leadership</strong>. Passionate about innovation, operational efficiency,{" "}
+              <strong>GenAI-driven tooling</strong> and applying <strong>AI/ML technologies</strong> to real-world engineering problems.
             </p>
             <div className="flex md:justify-start ">
               {contactLinks.map((el) => (
